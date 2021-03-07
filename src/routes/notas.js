@@ -36,9 +36,9 @@ router.post('/', (req, res) => {
     state: false
   };
 
-  dbConnection.query(query, nota, (error) => {
+  dbConnection.query(query, nota, (error, result) => {
     if (error) throw error;
-    res.json({ Status: 'Nota agregada' });
+    res.json({ Status: 'Nota agregada', id: result.insertId });
   });
 });
 
