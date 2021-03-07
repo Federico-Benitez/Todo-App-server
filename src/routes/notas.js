@@ -6,7 +6,6 @@ const dbConnection = require('../database');
 router.get('/', (req, res) => {
   dbConnection.query('SELECT * FROM notas', (err, rows) => {
     if (err) throw err;
-    console.log(rows);
     res.json(rows);
   });
 });
