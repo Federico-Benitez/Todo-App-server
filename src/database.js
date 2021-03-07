@@ -1,20 +1,20 @@
 const mysql = require('mysql');
 
 const dbConnection = mysql.createConnection({
-    host: 'pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'lec29hgj1phvnk4w',
-    password: 'lwci75e2plsfer26',
-    port: '3306',
-    database: 'hmm248zjylnjwzu8'
-})
+  host: 'process.env.DB_HOST,',
+  user: 'process.env.DB_USER',
+  password: 'process.env.DB_PASS',
+  port: '3306',
+  database: 'process.env.DB_NAME'
+});
 
 dbConnection.connect((err) => {
-    if(err){
-        console.log(err);
-        return;
-    }else{
-        console.log('BD conectada');
-    }
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log('BD conectada');
+  }
 });
 
 module.exports = dbConnection;
