@@ -1,4 +1,5 @@
 const express = require('express');
+const { restart } = require('nodemon');
 const router = express.Router();
 
 const dbConnection = require('../database');
@@ -44,9 +45,23 @@ router.post('/', (req, res) => {
   });
 });
 
+router.put('/:id', (req, res) => {
+  const { contenido, state } = req.body;
+  const { id } = req.params;
+  const query = `UPDATE notas SET contenido = '${contenido}', state = '${state}' WHERE id = ${id}`;
+  dbConnection.query(query, (error) => {
+    if (error) throw error;
+    res.json({ Status: 'Nota editada' });
+  });
+});
+
 router.delete('/:id', (req, res) => {
-  const query = 'DELETE * FROM notas WHERE id=?';
-  res.send('eliminado');
+  const { id } = req.params;
+  const query = `DELETE FROM notas WHERE id=${id}`;
+  dbConnection.query(query, (error) => {
+    if (error) throw error;
+    res.json({ Status: 'Nota eliminada' });
+  });
 });
 
 module.exports = router;
