@@ -4,7 +4,7 @@ const router = express.Router();
 
 const dbConnection = require('../database');
 
-router.get('/all', (req, res) => {
+router.get('/', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   dbConnection.query('SELECT * FROM notas', (err, rows) => {
     if (err) throw err;
@@ -48,6 +48,8 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   const { contenido, state } = req.body;
   const { id } = req.params;
+  //TODO: Arreglar, arrojar 404 en caso de no encontrar
+
   const query = `UPDATE notas SET contenido = '${contenido}', state = '${state}' WHERE id = ${id}`;
   dbConnection.query(query, (error) => {
     if (error) throw error;
@@ -57,6 +59,8 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
+  //TODO: Arreglar, arrojar 404 en caso de no encontrar
+
   const query = `DELETE FROM notas WHERE id=${id}`;
   dbConnection.query(query, (error) => {
     if (error) throw error;
