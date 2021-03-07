@@ -13,6 +13,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const { id } = req.params;
   dbConnection.query(
     'SELECT * FROM notas WHERE id=?',
@@ -30,6 +32,8 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const query = 'INSERT INTO notas SET ?';
 
   const { contenido } = req.body;
@@ -45,6 +49,8 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const { contenido, state } = req.body;
   const { id } = req.params;
   //TODO: Arreglar, arrojar 404 en caso de no encontrar
@@ -57,6 +63,8 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const { id } = req.params;
   //TODO: Arreglar, arrojar 404 en caso de no encontrar
 
