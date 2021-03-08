@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 app.use(cors());
 //Routes
-app.use(require('./routes/notas'));
+app.use(require('./routes/TaskRoutes'));
 
 //Run Server
 app.listen(app.get('port'), () => {

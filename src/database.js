@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const { promisify } = require('util');
 
 const dbConnection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -16,5 +17,7 @@ dbConnection.connect((err) => {
     console.log('BD conectada');
   }
 });
+
+dbConnection.query = promisify(dbConnection.query);
 
 module.exports = dbConnection;
