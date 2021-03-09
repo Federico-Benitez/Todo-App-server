@@ -2,11 +2,11 @@ const mysql = require('mysql');
 const { promisify } = require('util');
 
 const dbConnection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  host: "pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "lec29hgj1phvnk4w",
+  password: "lwci75e2plsfer26",
   port: '3306',
-  database: process.env.DB_NAME
+  database: "hmm248zjylnjwzu8"
 });
 
 dbConnection.connect((err) => {

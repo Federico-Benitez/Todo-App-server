@@ -16,13 +16,9 @@ module.exports = {
     return res.status(201).json('Edit correcto');
   },
   async createTask(req, res) {
-    await Task.createTask(req.body);
-    return res.status(201).json(res.insertId);
+    const { insertId } = await Task.createTask(req.body);    
+    return res.status(201).json(insertId);
   },
 
-  async getLastId(req,res ){
-    const lastId = await Task.getLastId();
-   
-    return res.status(201).json(lastId);
-  }
+  
 };

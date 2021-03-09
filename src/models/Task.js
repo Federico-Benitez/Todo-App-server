@@ -19,8 +19,9 @@ class Task {
       contenido,
       state: false
     };
-    await dbConnection.query(query, nota);
-    return { Status: 'Nota Creada' };
+    const { insertId } = await dbConnection.query(query, nota) 
+    return { Status: 'Nota Creada' , insertId};
+    
   }
 
   static async deleteTask({ id }) {
