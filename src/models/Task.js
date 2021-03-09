@@ -25,7 +25,9 @@ class Task {
 
   static async deleteTask({ id }) {
     const query = `DELETE FROM notas WHERE id=${id}`;
-    await dbConnection.query(query);
+    await dbConnection.query(query, (result) => {
+      console.log(result.insertId)
+    } );
     return { Status: 'Nota eliminada' };
   }
 }
