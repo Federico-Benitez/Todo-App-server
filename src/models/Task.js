@@ -19,10 +19,7 @@ class Task {
       contenido,
       state: false
     };
-    await dbConnection.query(query, nota , (result ) => {return {
-      Status: 'Nota creada',
-      id: result.insertId,
-    }});
+    await dbConnection.query(query, nota);
     return { Status: 'Nota Creada' };
   }
 
