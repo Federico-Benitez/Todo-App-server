@@ -18,5 +18,11 @@ module.exports = {
   async createTask(req, res) {
     await Task.createTask(req.body);
     return res.status(201).json(res.insertId);
+  },
+
+  async getLastId(req,res ){
+    const lastId = await Task.getLastId();
+   
+    return res.status(201).json(lastId);
   }
 };

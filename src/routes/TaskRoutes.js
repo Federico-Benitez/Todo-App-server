@@ -4,7 +4,8 @@ const {
   getAllTasks,
   createTask,
   editTask,
-  deleteTask
+  deleteTask,
+  getLastId
 } = require('../controllers/TaskController');
 
 const dbConnection = require('../database');
@@ -16,5 +17,7 @@ router.post('/', createTask);
 router.put('/:id', editTask);
 
 router.delete('/:id', deleteTask);
+
+router.get('/lastId', getLastId)
 
 module.exports = router;
