@@ -30,11 +30,7 @@ class Task {
     return { Status: 'Nota eliminada' };
   }
 
-  static async getLastId(){
-    const query = "SELECT max(id) FROM notas";
-    const lastId = await dbConnection.query(query);
-    return {lastId};
-  }
+  
 }
 
 module.exports = Task;

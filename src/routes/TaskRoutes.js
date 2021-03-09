@@ -18,6 +18,4 @@ router.put('/:id', editTask);
 
 router.delete('/:id', deleteTask);
 
-router.get('/lastId', getLastId)
-
 module.exports = router;
