@@ -17,6 +17,6 @@ module.exports = {
   },
   async createTask(req, res) {
     await Task.createTask(req.body);
-    return res.status(201).json('Creacion correcta');
+    return res.status(201).json(res.insertId);
   }
 };
