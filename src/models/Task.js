@@ -19,15 +19,16 @@ class Task {
       contenido,
       state: false
     };
-    await dbConnection.query(query, nota);
+    await dbConnection.query(query, nota , (result ) => {return {
+      Status: 'Nota creada',
+      id: result.insertId,
+    }});
     return { Status: 'Nota Creada' };
   }
 
   static async deleteTask({ id }) {
     const query = `DELETE FROM notas WHERE id=${id}`;
-    await dbConnection.query(query, (result) => {
-      console.log(result.insertId)
-    } );
+    await dbConnection.query(query);
     return { Status: 'Nota eliminada' };
   }
 }
